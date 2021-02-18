@@ -1,0 +1,14 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}Create New Entry{% endblock %}
+
+{% block body %}
+
+    <form action="{% url 'new' %}" method="post">
+        {% if error %}<div style="color: red">Entry with the same title already exists, Please choose another</div>{% endif %}
+
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="submit" value="Create Entry">
+    </form>
+{% endblock %}
